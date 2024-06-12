@@ -66,7 +66,7 @@ You probably need to clear the cache: `rm -rf .buildozer/android/platform/build-
 Assuming `adb` is installed:
 ```
 $ adb -d install -r dist/Electrum-*-arm64-v8a-debug.apk
-$ adb shell monkey -p com.electrum.chesscoin032 1
+$ adb shell monkey -p org.electrum.chesscoin032 1
 ```
 
 
@@ -91,7 +91,7 @@ adb logcat | grep python
 ```
 Better `grep` but fragile because of `cut`:
 ```
-adb logcat | grep -F "`adb shell ps | grep com.electrum.chesscoin032 | cut -c14-19`"
+adb logcat | grep -F "`adb shell ps | grep org.electrum.chesscoin032 | cut -c14-19`"
 ```
 
 
@@ -118,8 +118,8 @@ of Android does not let you access the internal storage of an app without root.
 (See [this](https://stackoverflow.com/q/9017073))
 ```
 $ adb shell
-$ run-as com.electrum.chesscoin032 ls /data/data/com.electrum.chesscoin032/files/data
-$ run-as com.electrum.chesscoin032 cp /data/data/com.electrum.chesscoin032/files/data/wallets/my_wallet /sdcard/some_path/my_wallet
+$ run-as org.electrum.chesscoin032 ls /data/data/org.electrum.chesscoin032/files/data
+$ run-as org.electrum.chesscoin032 cp /data/data/org.electrum.chesscoin032/files/data/wallets/my_wallet /sdcard/some_path/my_wallet
 ```
 
 ### How to investigate diff between binaries if reproducibility fails?

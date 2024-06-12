@@ -445,7 +445,7 @@ def android_ext_dir():
     return primary_external_storage_path()
 
 def android_backup_dir():
-    d = os.path.join(android_ext_dir(), 'com.electrum.chesscoin032')
+    d = os.path.join(android_ext_dir(), 'org.electrum.chesscoin032')
     if not os.path.exists(d):
         os.mkdir(d)
     return d
