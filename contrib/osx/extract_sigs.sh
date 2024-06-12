@@ -27,31 +27,30 @@ BUNDLE_BASENAME=$(basename "$BUNDLE")
 rm -rf ${TEMPDIR}
 mkdir -p ${TEMPDIR}
 
-#MAYBE_SIGNED_FILES=$(find "$BUNDLE/Contents/MacOS/" -type f)
+MAYBE_SIGNED_FILES=$(find "$BUNDLE/Contents/MacOS/" -type f)
 
-#echo "${MAYBE_SIGNED_FILES}" | while read i; do
-#   # skip files where pagestuff errors; these probably do not need signing:
-#    pagestuff "$i" -p 1>/dev/null 2>/dev/null || continue
-#    TARGETFILE="${BUNDLE_BASENAME}/$(echo "${i}" | sed "s|.*${BUNDLE}/||")"
-#    SIZE=$(pagestuff "$i" -p | tail -2 | grep size | sed 's/[^0-9]*//g')
-#    OFFSET=$(pagestuff "$i" -p | tail -2 | grep offset | sed 's/[^0-9]*//g')
-#    SIGNFILE="${TEMPDIR}/${OUTROOT}/${TARGETFILE}.sign"
-#    DIRNAME="$(dirname "${SIGNFILE}")"
-#    mkdir -p "${DIRNAME}"
-#    if [ -z ${QUIET} ]; then
-#        echo "Adding detached signature for: ${TARGETFILE}. Size: ${SIZE}. Offset: ${OFFSET}"
-#    fi
-#    dd if="$i" of="${SIGNFILE}" bs=1 skip=${OFFSET} count=${SIZE} 2>/dev/null
-#done
+echo "${MAYBE_SIGNED_FILES}" | while read i; do
+    # skip files where pagestuff errors; these probably do not need signing:
+    pagestuff "$i" -p 1>/dev/null 2>/dev/null || continue
+    TARGETFILE="${BUNDLE_BASENAME}/$(echo "${i}" | sed "s|.*${BUNDLE}/||")"
+    SIZE=$(pagestuff "$i" -p | tail -2 | grep size | sed 's/[^0-9]*//g')
+    OFFSET=$(pagestuff "$i" -p | tail -2 | grep offset | sed 's/[^0-9]*//g')
+    SIGNFILE="${TEMPDIR}/${OUTROOT}/${TARGETFILE}.sign"
+    DIRNAME="$(dirname "${SIGNFILE}")"
+    mkdir -p "${DIRNAME}"
+    if [ -z ${QUIET} ]; then
+        echo "Adding detached signature for: ${TARGETFILE}. Size: ${SIZE}. Offset: ${OFFSET}"
+    fi
+    dd if="$i" of="${SIGNFILE}" bs=1 skip=${OFFSET} count=${SIZE} 2>/dev/null
+done
 
-#FILES_TO_COPY=$(cat << EOF
-#$BUNDLE/Contents/_CodeSignature/CodeResources
-#$BUNDLE/Contents/CodeResources
-#EOF
-#)
+FILES_TO_COPY=$(cat << EOF
+$BUNDLE/Contents/_CodeSignature/CodeResources
+$BUNDLE/Contents/CodeResources
+EOF
+)
 
-#echo "${FILES_TO_COPY}" | while read i; do
-while read i; do
+echo "${FILES_TO_COPY}" | while read i; do
     TARGETFILE="${BUNDLE_BASENAME}/$(echo "${i}" | sed "s|.*${BUNDLE}/||")"
     RESOURCE="${TEMPDIR}/${OUTROOT}/${TARGETFILE}"
     DIRNAME="$(dirname "${RESOURCE}")"

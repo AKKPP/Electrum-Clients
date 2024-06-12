@@ -5,7 +5,7 @@ wheel
 # TODO test newer versions of pyinstaller for build-reproducibility.
 #      upper bound is there due to change in code-signing behaviour
 #      (https://github.com/pyinstaller/pyinstaller/pull/5581)
-pyinstaller>=3.6,<4.3
+pyinstaller>=3.6
 
 # needed by pyinstaller:
 macholib
