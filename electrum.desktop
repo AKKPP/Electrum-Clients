@@ -2,12 +2,12 @@
 # sudo desktop-file-install electrum.desktop
 
 [Desktop Entry]
-Comment=Lightweight ChessCoin 0.32% Wallet
+Comment=Lightweight ChessCoin 0.32% Client
 Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum %u"
 GenericName[en_US]=Chesscoin Wallet
 GenericName=Chesscoin Wallet
 Icon=electrum
-Name[en_US]=Chesscoin Electrum Wallet
+Name[en_US]=ChessCoin 0.32% Electrum Client
 Name=Chesscoin Electrum Wallet
 Categories=Finance;Network;
 StartupNotify=true

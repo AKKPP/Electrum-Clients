@@ -88,10 +88,10 @@ setup(
     include_package_data=True,
     scripts=['electrum/electrum'],
     data_files=data_files,
-    description="Chesscoin0.32% Electrum Wallet",
+    description="Chesscoin 0.32% Electrum Wallet",
     author="Thomas Voegtlin, Oleksandr Kolesnyk",
     author_email="alexandkolesnik73@gmail.com",
     license="MIT Licence",
     url="https://chesscoin032.com/",
-    long_description="""Chesscoin0.32% Electrum Wallet""",
+    long_description="""Chesscoin 0.32% Electrum Wallet""",
 )
