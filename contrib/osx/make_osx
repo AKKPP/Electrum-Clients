@@ -6,7 +6,7 @@ set -e
 PYTHON_VERSION=3.9.7
 BUILDDIR=/tmp/electrum-build
 PACKAGE=Chesscoin032-Electrum
-GIT_REPO=https://github.com/AKKPP/Electrum-Clients
+GIT_REPO=https://github.com/AKKPP/Electrum-Clients.git
 
 export GCC_STRIP_BINARIES="1"
 export PYTHONDONTWRITEBYTECODE=1  # don't create __pycache__/ folders with .pyc files

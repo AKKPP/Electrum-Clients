@@ -1,19 +1,19 @@
 from sys import platform as _platform
 
-ELECTRUM_APP_VERSION = '1.0.3'
+ELECTRUM_APP_VERSION = '1.0.2'
 
 if _platform == "linux" or _platform == "linux2":
-    ELECTRUM_VERSION = '1.0.3.2'
+    ELECTRUM_VERSION = '1.0.2.2'
 elif _platform == "darwin":
-    ELECTRUM_VERSION = '1.0.3.3'
+    ELECTRUM_VERSION = '1.0.2.3'
 elif _platform == "win32":
-    ELECTRUM_VERSION = '1.0.3.1'
+    ELECTRUM_VERSION = '1.0.2.1'
 elif _platform == "win64":
-    ELECTRUM_VERSION = '1.0.3.1'
+    ELECTRUM_VERSION = '1.0.2.1'
 else:
-    ELECTRUM_VERSION = '1.0.3.4'
+    ELECTRUM_VERSION = '1.0.2.4'
 
-APK_VERSION = '1.0.3.5'        # read by buildozer.spec
+APK_VERSION = '1.0.2.5'        # read by buildozer.spec
 
 PROTOCOL_VERSION = '1.4'     # protocol version requested
 
